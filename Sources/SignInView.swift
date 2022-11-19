@@ -13,7 +13,7 @@ class SignInViewModel: ObservableObject {
 }
 
 struct SignInView: View {
-    @StateObject private var viewModel = SignUpViewModel()
+    @StateObject private var viewModel = SignInViewModel()
 
     var body: some View {
         VStack(spacing: 20) {
