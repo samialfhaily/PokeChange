@@ -61,6 +61,7 @@
 		269DB9A929284A4900606CA2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				2F9201D7292899FB000C609F /* Tabs */,
 				269DB9AA29284A4900606CA2 /* XchangeApp.swift */,
 				2F36D79B292860D000205B63 /* SignInView.swift */,
 				269DB9AC29284A4900606CA2 /* ContentView.swift */,
@@ -72,6 +73,37 @@
 				269DB9AE29284A4A00606CA2 /* Assets.xcassets */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		2F9201D7292899FB000C609F /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				2F9201DA29289A20000C609F /* Matches */,
+				2F9201D929289A18000C609F /* Wallet */,
+				2F9201D829289A0B000C609F /* Marketplace */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		2F9201D829289A0B000C609F /* Marketplace */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Marketplace;
+			sourceTree = "<group>";
+		};
+		2F9201D929289A18000C609F /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		2F9201DA29289A20000C609F /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Matches;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
