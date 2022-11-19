@@ -8,43 +8,7 @@
 import SwiftUI
 
 final class MatchesViewModel: ObservableObject {
-    @Published private(set) var matches: [Match] = [
-        Match(
-            id: 0,
-            buyingOrder: ChildOrder(
-                id: 1,
-                masterOrder: MasterOrder(
-                    id: 1,
-                    card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
-                    quantity: 1,
-                    price: 10,
-                    side: .buy,
-                    username: "sami",
-                    completed: true,
-                    placeDate: .now
-                ),
-                quantity: 5,
-                price: 10,
-                executionDate: .now
-            ),
-            sellingOrder: ChildOrder(
-                id: 1,
-                masterOrder: MasterOrder(
-                    id: 2,
-                    card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
-                    quantity: 1,
-                    price: 10,
-                    side: .sell,
-                    username: "atharva",
-                    completed: true,
-                    placeDate: .now
-                ),
-                quantity: 5,
-                price: 10,
-                executionDate: .now
-            )
-        )
-    ]
+    @Published private(set) var matches: [Match] = []
 }
 
 struct MatchesView: View {
