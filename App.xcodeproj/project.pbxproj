@@ -16,6 +16,8 @@
 		2624896829289C2200A04455 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624896729289C2200A04455 /* WalletView.swift */; };
 		2624896A29289C2600A04455 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624896929289C2600A04455 /* MatchesView.swift */; };
 		2624896C29289C3800A04455 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624896B29289C3800A04455 /* RootView.swift */; };
+		2624896F2928AAC300A04455 /* OrderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624896E2928AAC300A04455 /* OrderDetailsView.swift */; };
+		262489712928AAD700A04455 /* MatchEntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262489702928AAD700A04455 /* MatchEntryRow.swift */; };
 		269DB9AB29284A4900606CA2 /* XchangeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269DB9AA29284A4900606CA2 /* XchangeApp.swift */; };
 		269DB9AD29284A4900606CA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269DB9AC29284A4900606CA2 /* ContentView.swift */; };
 		269DB9AF29284A4A00606CA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269DB9AE29284A4A00606CA2 /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		2624896729289C2200A04455 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		2624896929289C2600A04455 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
 		2624896B29289C3800A04455 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		2624896E2928AAC300A04455 /* OrderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsView.swift; sourceTree = "<group>"; };
+		262489702928AAD700A04455 /* MatchEntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchEntryRow.swift; sourceTree = "<group>"; };
 		269DB9A729284A4900606CA2 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269DB9AA29284A4900606CA2 /* XchangeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XchangeApp.swift; sourceTree = "<group>"; };
 		269DB9AC29284A4900606CA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,9 +83,19 @@
 		2624896629289C0A00A04455 /* Matches */ = {
 			isa = PBXGroup;
 			children = (
+				2624896D2928AABF00A04455 /* Orders */,
 				2624896929289C2600A04455 /* MatchesView.swift */,
+				262489702928AAD700A04455 /* MatchEntryRow.swift */,
 			);
 			path = Matches;
+			sourceTree = "<group>";
+		};
+		2624896D2928AABF00A04455 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				2624896E2928AAC300A04455 /* OrderDetailsView.swift */,
+			);
+			path = Orders;
 			sourceTree = "<group>";
 		};
 		269DB99E29284A4900606CA2 = {
@@ -198,7 +212,9 @@
 				2624896C29289C3800A04455 /* RootView.swift in Sources */,
 				260C5D15292852A800F028D6 /* SignUpView.swift in Sources */,
 				260C5D1929285F3A00F028D6 /* BBTextField.swift in Sources */,
+				2624896F2928AAC300A04455 /* OrderDetailsView.swift in Sources */,
 				269DB9AB29284A4900606CA2 /* XchangeApp.swift in Sources */,
+				262489712928AAD700A04455 /* MatchEntryRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,9 +7,22 @@
 
 import SwiftUI
 
+final class MatchesViewModel: ObservableObject {
+    //    @Published private(set) var matches: [Match] = []
+}
+
 struct MatchesView: View {
+    @StateObject private var viewModel = MatchesViewModel()
+    
     var body: some View {
-        Text("Matches")
+        NavigationStack {
+            List {
+                NavigationLink(destination: OrderDetailsView(viewModel: OrderDetailsViewModel(orderId: 10))) {
+                    MatchEntryRow()
+                }
+            }
+            .navigationTitle(Text("Matches"))
+        }
     }
 }
 
