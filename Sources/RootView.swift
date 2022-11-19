@@ -21,13 +21,13 @@ struct RootView: View {
             WalletView()
                 .tag(1)
                 .tabItem {
-                    Label("Marketplace", systemImage: "bag")
+                    Label("Wallet", systemImage: "bag")
                 }
             
             MatchesView()
                 .tag(2)
                 .tabItem {
-                    Label("Marketplace", systemImage: "doc.plaintext.fill")
+                    Label("Matches", systemImage: "doc.plaintext.fill")
                 }
         }
     }

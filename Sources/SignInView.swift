@@ -25,7 +25,7 @@ struct SignInView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Xchange")
+            Text("PokéChange")
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
