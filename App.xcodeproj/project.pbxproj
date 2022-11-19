@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260C5D15292852A800F028D6 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C5D14292852A800F028D6 /* SignUpView.swift */; };
+		260C5D1729285ED900F028D6 /* BBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C5D1629285ED900F028D6 /* BBButton.swift */; };
+		260C5D1929285F3A00F028D6 /* BBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C5D1829285F3A00F028D6 /* BBTextField.swift */; };
+		260C5D1B29285F5100F028D6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C5D1A29285F5100F028D6 /* Colors.swift */; };
 		269DB9AB29284A4900606CA2 /* XchangeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269DB9AA29284A4900606CA2 /* XchangeApp.swift */; };
 		269DB9AD29284A4900606CA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269DB9AC29284A4900606CA2 /* ContentView.swift */; };
 		269DB9AF29284A4A00606CA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269DB9AE29284A4A00606CA2 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		260C5D14292852A800F028D6 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		260C5D1629285ED900F028D6 /* BBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBButton.swift; sourceTree = "<group>"; };
+		260C5D1829285F3A00F028D6 /* BBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBTextField.swift; sourceTree = "<group>"; };
+		260C5D1A29285F5100F028D6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		269DB9A729284A4900606CA2 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269DB9AA29284A4900606CA2 /* XchangeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XchangeApp.swift; sourceTree = "<group>"; };
 		269DB9AC29284A4900606CA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +59,10 @@
 			children = (
 				269DB9AA29284A4900606CA2 /* XchangeApp.swift */,
 				269DB9AC29284A4900606CA2 /* ContentView.swift */,
+				260C5D14292852A800F028D6 /* SignUpView.swift */,
+				260C5D1A29285F5100F028D6 /* Colors.swift */,
+				260C5D1629285ED900F028D6 /* BBButton.swift */,
+				260C5D1829285F3A00F028D6 /* BBTextField.swift */,
 				269DB9AE29284A4A00606CA2 /* Assets.xcassets */,
 			);
 			path = Sources;
@@ -126,6 +138,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				269DB9AD29284A4900606CA2 /* ContentView.swift in Sources */,
+				260C5D1B29285F5100F028D6 /* Colors.swift in Sources */,
+				260C5D1729285ED900F028D6 /* BBButton.swift in Sources */,
+				260C5D15292852A800F028D6 /* SignUpView.swift in Sources */,
+				260C5D1929285F3A00F028D6 /* BBTextField.swift in Sources */,
 				269DB9AB29284A4900606CA2 /* XchangeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
