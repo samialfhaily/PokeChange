@@ -26,6 +26,7 @@
 		26E982242928F2CC00016325 /* MarketplaceCardThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E982232928F2CC00016325 /* MarketplaceCardThumbnail.swift */; };
 		26E982262929590E00016325 /* AllCardsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E982252929590E00016325 /* AllCardsListView.swift */; };
 		2F36D79C292860D000205B63 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36D79B292860D000205B63 /* SignInView.swift */; };
+		2F82726129293395003A2C83 /* MarketplaceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F82726029293395003A2C83 /* MarketplaceDetailsView.swift */; };
 		2F96CE4229289FB80075623D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96CE4129289FB80075623D /* Card.swift */; };
 		2F96CE4429289FF90075623D /* MasterOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96CE4329289FF90075623D /* MasterOrder.swift */; };
 		2F96CE462928A0170075623D /* CardRarity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96CE452928A0170075623D /* CardRarity.swift */; };
@@ -54,6 +55,7 @@
 		26E982232928F2CC00016325 /* MarketplaceCardThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceCardThumbnail.swift; sourceTree = "<group>"; };
 		26E982252929590E00016325 /* AllCardsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCardsListView.swift; sourceTree = "<group>"; };
 		2F36D79B292860D000205B63 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		2F82726029293395003A2C83 /* MarketplaceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceDetailsView.swift; sourceTree = "<group>"; };
 		2F96CE4129289FB80075623D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		2F96CE4329289FF90075623D /* MasterOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterOrder.swift; sourceTree = "<group>"; };
 		2F96CE452928A0170075623D /* CardRarity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRarity.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				2624896129289BED00A04455 /* MarketplaceView.swift */,
 				26E982232928F2CC00016325 /* MarketplaceCardThumbnail.swift */,
+				2F82726029293395003A2C83 /* MarketplaceDetailsView.swift */,
 			);
 			path = Marketplace;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F82726129293395003A2C83 /* MarketplaceDetailsView.swift in Sources */,
 				2F96CE4429289FF90075623D /* MasterOrder.swift in Sources */,
 				26E982242928F2CC00016325 /* MarketplaceCardThumbnail.swift in Sources */,
 				269DB9AD29284A4900606CA2 /* ContentView.swift in Sources */,

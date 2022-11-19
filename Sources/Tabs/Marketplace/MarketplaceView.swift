@@ -55,8 +55,10 @@ struct MarketplaceView: View {
                     if let cards = viewModel.cards {
                         LazyVGrid(columns: columns, alignment: .center, spacing: 16) {
                             ForEach(cards) { card in
-                                MarketplaceCardThumbnail(card: card)
-                                    .clipped()
+                                NavigationLink(value: card) {
+                                    MarketplaceCardThumbnail(card: card)
+                                        .clipped()
+                                }
                             }
                         }
                     } else {
@@ -67,6 +69,9 @@ struct MarketplaceView: View {
             }
             .searchable(text: $viewModel.searchQuery)
             .navigationTitle(Text("Marketplace"))
+            .navigationDestination(for: Card.self) { card in
+                MarketplaceCardDetailsView(card: card)
+            }
         }
     }
 }
