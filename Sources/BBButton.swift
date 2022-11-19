@@ -11,6 +11,7 @@ struct BBButton<T: View>: View {
     private let style: Self.Style
     private let action: () -> Void
     @ViewBuilder private let label: () -> T
+    @Environment(\.isEnabled) private var isEnabled: Bool
     
     init(_ style: Self.Style, action: @escaping () -> Void, label: @escaping () -> T) {
         self.style = style
@@ -27,7 +28,7 @@ struct BBButton<T: View>: View {
                     .bold()
                     .frame(height: 59)
                     .frame(maxWidth: .infinity)
-                    .background(Color.bbBlue)
+                    .background(isEnabled ? Color.bbBlue : Color.gray)
                     .cornerRadius(5)
             case .secondary:
                 label()

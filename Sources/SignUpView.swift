@@ -14,8 +14,7 @@ class SignUpViewModel: ObservableObject {
     @Published var confirmPassword = ""
     
     var isSignUpButtonDisabled: Bool {
-        return email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-        || username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        return username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         || password.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         || confirmPassword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         || password != confirmPassword
@@ -25,6 +24,7 @@ class SignUpViewModel: ObservableObject {
 struct SignUpView: View {
     @StateObject private var viewModel = SignUpViewModel()
     @EnvironmentObject private var authenticationManager: AuthenticationManager
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack(spacing: 20) {
@@ -45,7 +45,11 @@ struct SignUpView: View {
             .padding(.bottom, 10)
             
             BBButton(.primary) {
-                authenticationManager.isSignedIn = true
+                Task {
+                    if (await authenticationManager.signUp(username: viewModel.username, password: viewModel.password)) {
+                        dismiss()
+                    }
+                }
             } label: {
                 Text("Sign Up")
             }
