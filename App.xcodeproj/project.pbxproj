@@ -12,6 +12,10 @@
 		260C5D1929285F3A00F028D6 /* BBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C5D1829285F3A00F028D6 /* BBTextField.swift */; };
 		260C5D1B29285F5100F028D6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C5D1A29285F5100F028D6 /* Colors.swift */; };
 		260C5D1D2928657700F028D6 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C5D1C2928657700F028D6 /* AuthenticationManager.swift */; };
+		2624896229289BED00A04455 /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624896129289BED00A04455 /* MarketplaceView.swift */; };
+		2624896829289C2200A04455 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624896729289C2200A04455 /* WalletView.swift */; };
+		2624896A29289C2600A04455 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624896929289C2600A04455 /* MatchesView.swift */; };
+		2624896C29289C3800A04455 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624896B29289C3800A04455 /* RootView.swift */; };
 		269DB9AB29284A4900606CA2 /* XchangeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269DB9AA29284A4900606CA2 /* XchangeApp.swift */; };
 		269DB9AD29284A4900606CA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269DB9AC29284A4900606CA2 /* ContentView.swift */; };
 		269DB9AF29284A4A00606CA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269DB9AE29284A4A00606CA2 /* Assets.xcassets */; };
@@ -24,6 +28,10 @@
 		260C5D1829285F3A00F028D6 /* BBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBTextField.swift; sourceTree = "<group>"; };
 		260C5D1A29285F5100F028D6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		260C5D1C2928657700F028D6 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		2624896129289BED00A04455 /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
+		2624896729289C2200A04455 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
+		2624896929289C2600A04455 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
+		2624896B29289C3800A04455 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		269DB9A729284A4900606CA2 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269DB9AA29284A4900606CA2 /* XchangeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XchangeApp.swift; sourceTree = "<group>"; };
 		269DB9AC29284A4900606CA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +50,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2624896329289BFA00A04455 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				2624896429289C0000A04455 /* Marketplace */,
+				2624896529289C0600A04455 /* Wallet */,
+				2624896629289C0A00A04455 /* Matches */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		2624896429289C0000A04455 /* Marketplace */ = {
+			isa = PBXGroup;
+			children = (
+				2624896129289BED00A04455 /* MarketplaceView.swift */,
+			);
+			path = Marketplace;
+			sourceTree = "<group>";
+		};
+		2624896529289C0600A04455 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				2624896729289C2200A04455 /* WalletView.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		2624896629289C0A00A04455 /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+				2624896929289C2600A04455 /* MatchesView.swift */,
+			);
+			path = Matches;
+			sourceTree = "<group>";
+		};
 		269DB99E29284A4900606CA2 = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +103,7 @@
 		269DB9A929284A4900606CA2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				2F9201D7292899FB000C609F /* Tabs */,
+				2624896329289BFA00A04455 /* Tabs */,
 				269DB9AA29284A4900606CA2 /* XchangeApp.swift */,
 				2F36D79B292860D000205B63 /* SignInView.swift */,
 				269DB9AC29284A4900606CA2 /* ContentView.swift */,
@@ -71,39 +113,9 @@
 				260C5D1629285ED900F028D6 /* BBButton.swift */,
 				260C5D1829285F3A00F028D6 /* BBTextField.swift */,
 				269DB9AE29284A4A00606CA2 /* Assets.xcassets */,
+				2624896B29289C3800A04455 /* RootView.swift */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		2F9201D7292899FB000C609F /* Tabs */ = {
-			isa = PBXGroup;
-			children = (
-				2F9201DA29289A20000C609F /* Matches */,
-				2F9201D929289A18000C609F /* Wallet */,
-				2F9201D829289A0B000C609F /* Marketplace */,
-			);
-			path = Tabs;
-			sourceTree = "<group>";
-		};
-		2F9201D829289A0B000C609F /* Marketplace */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Marketplace;
-			sourceTree = "<group>";
-		};
-		2F9201D929289A18000C609F /* Wallet */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Wallet;
-			sourceTree = "<group>";
-		};
-		2F9201DA29289A20000C609F /* Matches */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Matches;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,10 +188,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				269DB9AD29284A4900606CA2 /* ContentView.swift in Sources */,
+				2624896A29289C2600A04455 /* MatchesView.swift in Sources */,
+				2624896829289C2200A04455 /* WalletView.swift in Sources */,
 				2F36D79C292860D000205B63 /* SignInView.swift in Sources */,
+				2624896229289BED00A04455 /* MarketplaceView.swift in Sources */,
 				260C5D1B29285F5100F028D6 /* Colors.swift in Sources */,
 				260C5D1D2928657700F028D6 /* AuthenticationManager.swift in Sources */,
 				260C5D1729285ED900F028D6 /* BBButton.swift in Sources */,
+				2624896C29289C3800A04455 /* RootView.swift in Sources */,
 				260C5D15292852A800F028D6 /* SignUpView.swift in Sources */,
 				260C5D1929285F3A00F028D6 /* BBTextField.swift in Sources */,
 				269DB9AB29284A4900606CA2 /* XchangeApp.swift in Sources */,

@@ -11,6 +11,7 @@ struct User {
     let id: Int
     let username: String
     let password: String
+    var balance: Double
 }
 
 final class AuthenticationManager: ObservableObject {

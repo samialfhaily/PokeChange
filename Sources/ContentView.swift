@@ -16,7 +16,7 @@ struct ContentView: View {
             set: { authenticationManager.isSignedIn = !$0 }
         )
         
-        Text("Hello, World")
+        RootView()
             .fullScreenCover(isPresented: isPresentingSignInSheet) {
                 SignInView()
                     .environmentObject(authenticationManager)
