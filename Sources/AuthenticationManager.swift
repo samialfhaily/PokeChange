@@ -32,11 +32,7 @@ struct AuthenticationPayload: Codable {
 
 final class AuthenticationManager: ObservableObject {
     @Published var isSignedIn = false
-//    var user: User!
-    
-    var user: User {
-        return User(id: 10, username: "sami", password: "12345678", balance: 3000)
-    }
+    var user: User!
     
     @MainActor func signUp(username: String, password: String) async -> Bool {
         let url = URL(string: "https://andreascs.com/api/user/sign-up")!
@@ -47,8 +43,6 @@ final class AuthenticationManager: ObservableObject {
             let encoder = JSONEncoder()
             request.httpBody = try encoder.encode(AuthenticationPayload(username: username, password: password))
             let (data, _) = try await URLSession.shared.data(for: request)
-            let json = try JSONSerialization.jsonObject(with: data)
-            print(json)
             self.user = try JSONDecoder().decode(User.self, from: data)
             isSignedIn = true
         } catch {
@@ -68,8 +62,6 @@ final class AuthenticationManager: ObservableObject {
         do {
             request.httpBody = try JSONEncoder().encode(AuthenticationPayload(username: username, password: password))
             let (data, _) = try await URLSession.shared.data(for: request)
-            let json = try JSONSerialization.jsonObject(with: data)
-            print(json)
             self.user = try JSONDecoder().decode(User.self, from: data)
             isSignedIn = true
         } catch {
