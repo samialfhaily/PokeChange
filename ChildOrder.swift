@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct ChildOrder {
+struct ChildOrder: Hashable {
     let id: Int
     let masterOrder: MasterOrder
     let quantity: Int
     let price: Double
+    let executionDate: Date
 }

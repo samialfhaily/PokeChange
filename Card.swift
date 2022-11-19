@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Card {
+struct Card: Hashable {
     let id: String
     let name: String
-    let rarity: CardRarity
+    let rarity: CardRarity?
     let imageUrl: URL
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Side {
+enum Side: Hashable {
     case buy
     case sell
 }

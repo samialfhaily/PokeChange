@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MasterOrder {
+struct MasterOrder: Hashable {
     let id: Int
     let card: Card
     let quantity: Int

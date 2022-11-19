@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Match {
+struct Match: Identifiable, Hashable {
     let id: Int
     let buyingOrder: ChildOrder
     let sellingOrder: ChildOrder
