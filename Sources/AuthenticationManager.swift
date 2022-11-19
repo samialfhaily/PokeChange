@@ -16,7 +16,11 @@ struct User {
 
 final class AuthenticationManager: ObservableObject {
     @Published var isSignedIn = false
-    var user: User!
+//    var user: User!
+    
+    var user: User {
+        return User(id: 10, username: "sami", password: "12345678", balance: 3000)
+    }
     
     @MainActor func signUp(username: String, password: String) async -> Bool {
         isSignedIn = true

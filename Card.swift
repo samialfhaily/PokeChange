@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card: Hashable {
+struct Card: Hashable, Identifiable {
     let id: String
     let name: String
     let rarity: CardRarity?
