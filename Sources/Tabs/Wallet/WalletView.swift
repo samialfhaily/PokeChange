@@ -11,11 +11,11 @@ final class WalletViewModel: ObservableObject {
     @Published var topCards: [Card]?
     @Published var pendingOrders: [MasterOrder]?
     
-    func fetchTopCards() async {
+    @MainActor func fetchTopCards() async {
         topCards = []
     }
     
-    func fetchOutstandingOrders() async {
+    @MainActor func fetchOutstandingOrders() async {
         pendingOrders = []
     }
 }

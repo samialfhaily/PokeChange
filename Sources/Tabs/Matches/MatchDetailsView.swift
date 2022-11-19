@@ -13,31 +13,34 @@ struct MatchDetailsView: View {
     var body: some View {
         VStack(spacing: 20) {
             HStack(alignment: .bottom, spacing: 4) {
-                AsyncImage(url: match.buyingOrder.masterOrder.card.imageUrl) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 150, height: 209.4)
-                        .padding(.trailing, 15)
-                } placeholder: {
-                    Color.gray
-                        .frame(width: 150, height: 209.4)
-                        .cornerRadius(8)
-                        .padding(.trailing, 15)
+                AsyncImage(url: match.buyingOrder.card.imageUrl, transaction: Transaction(animation: .default)) { phase in
+                    switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150, height: 209.4)
+                            .padding(.trailing, 15)
+                    default:
+                        Color.gray
+                            .frame(width: 150, height: 209.4)
+                            .cornerRadius(8)
+                            .padding(.trailing, 15)
+                    }
                 }
                 
                 VStack(alignment: .leading, spacing: .zero) {
-                    Text(match.buyingOrder.masterOrder.card.name)
+                    Text(match.buyingOrder.card.name)
                         .font(.largeTitle)
                         .bold()
                     
-                    Text(match.buyingOrder.masterOrder.card.rarity?.rawValue ?? "Unknown")
+                    Text(match.buyingOrder.card.rarity?.rawValue ?? "Unknown")
                         .font(.title2)
                         .foregroundColor(.secondary)
                         .bold()
                         .padding(.bottom, 2)
                     
-                    Text(match.buyingOrder.executionDate, format: .dateTime)
+                    Text(match.executionDate, format: .dateTime)
                         .foregroundColor(.secondary)
                 }
                 
@@ -53,25 +56,25 @@ struct MatchDetailsView: View {
                     
                     Spacer(minLength: .zero)
                     
-                    Text(match.buyingOrder.masterOrder.username)
+                    Text(match.buyingOrder.username)
                         .font(.title)
                         .foregroundColor(.secondary)
                 }
                 
                 HStack(alignment: .bottom) {
-                    Text("\(match.buyingOrder.masterOrder.quantity)x \(match.buyingOrder.masterOrder.quantity > 1 ? "Cards" : "Card")")
+                    Text("\(match.buyingOrder.quantity)x \(match.buyingOrder.quantity > 1 ? "Cards" : "Card")")
                     
                     Spacer(minLength: .zero)
                     
                     HStack(alignment: .center, spacing: .zero) {
-                        Text(match.buyingOrder.masterOrder.price, format: .currency(code: "USD"))
+                        Text(match.buyingOrder.price, format: .currency(code: "USD"))
                         Text(" per card")
                     }
                     .fontWeight(.semibold)
                 }
                 
                 HStack(alignment: .bottom) {
-                    if match.buyingOrder.masterOrder.completed {
+                    if match.buyingOrder.completed {
                         Text("Fulfilled")
                             .foregroundColor(.green)
                             .bold()
@@ -80,7 +83,7 @@ struct MatchDetailsView: View {
                     
                     Spacer(minLength: .zero)
                     
-                    Text(match.buyingOrder.masterOrder.placeDate, format: .dateTime)
+                    Text(match.buyingOrder.placeDate, format: .dateTime)
                 }
             }
             .padding(8)
@@ -96,25 +99,25 @@ struct MatchDetailsView: View {
                     
                     Spacer(minLength: .zero)
                     
-                    Text(match.sellingOrder.masterOrder.username)
+                    Text(match.sellingOrder.username)
                         .font(.title)
                         .foregroundColor(.secondary)
                 }
                 
                 HStack {
-                    Text("\(match.sellingOrder.masterOrder.quantity)x \(match.sellingOrder.masterOrder.quantity > 1 ? "Cards" : "Card")")
+                    Text("\(match.sellingOrder.quantity)x \(match.sellingOrder.quantity > 1 ? "Cards" : "Card")")
                     
                     Spacer(minLength: .zero)
                     
                     HStack(alignment: .bottom, spacing: .zero) {
-                        Text(match.sellingOrder.masterOrder.price, format: .currency(code: "USD"))
+                        Text(match.sellingOrder.price, format: .currency(code: "USD"))
                         Text(" per card")
                     }
                     .fontWeight(.semibold)
                 }
                 
                 HStack(alignment: .bottom) {
-                    if match.sellingOrder.masterOrder.completed {
+                    if match.sellingOrder.completed {
                         Text("Fulfilled")
                             .foregroundColor(.green)
                             .bold()
@@ -123,7 +126,7 @@ struct MatchDetailsView: View {
                     
                     Spacer(minLength: .zero)
                     
-                    Text(match.sellingOrder.masterOrder.placeDate, format: .dateTime)
+                    Text(match.sellingOrder.placeDate, format: .dateTime)
                 }
             }
             .padding(8)
@@ -152,38 +155,29 @@ struct MatchDetailsView_Previews: PreviewProvider {
         MatchDetailsView(
             match: Match(
                 id: 0,
-                buyingOrder: ChildOrder(
+                buyingOrder: MasterOrder(
                     id: 1,
-                    masterOrder: MasterOrder(
-                        id: 1,
-                        card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
-                        quantity: 1,
-                        price: 10,
-                        side: .buy,
-                        username: "sami",
-                        completed: true,
-                        placeDate: .now
-                    ),
-                    quantity: 5,
+                    card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
+                    quantity: 1,
                     price: 10,
-                    executionDate: .now
+                    side: .buy,
+                    username: "sami",
+                    completed: true,
+                    placeDate: .now
                 ),
-                sellingOrder: ChildOrder(
-                    id: 1,
-                    masterOrder: MasterOrder(
-                        id: 2,
-                        card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
-                        quantity: 1,
-                        price: 10,
-                        side: .sell,
-                        username: "atharva",
-                        completed: true,
-                        placeDate: .now
-                    ),
-                    quantity: 5,
+                sellingOrder:  MasterOrder(
+                    id: 2,
+                    card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
+                    quantity: 1,
                     price: 10,
-                    executionDate: .now
-                )
+                    side: .sell,
+                    username: "atharva",
+                    completed: true,
+                    placeDate: .now
+                ),
+                quantity: 5,
+                price: 10,
+                executionDate: .now
             )
         )
     }

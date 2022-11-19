@@ -12,17 +12,20 @@ struct PendingOrderRow: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: .zero) {
-            AsyncImage(url: order.card.imageUrl) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 75, height: 104.7)
-                    .padding(.trailing, 15)
-            } placeholder: {
-                Color.gray
-                    .frame(width: 75, height: 104.7)
-                    .cornerRadius(3)
-                    .padding(.trailing, 15)
+            AsyncImage(url: order.card.imageUrl, transaction: Transaction(animation: .default)) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 75, height: 104.7)
+                        .padding(.trailing, 15)
+                default:
+                    Color.gray
+                        .frame(width: 75, height: 104.7)
+                        .cornerRadius(3)
+                        .padding(.trailing, 15)
+                }
             }
             
             VStack(alignment: .leading, spacing: 4) {

@@ -12,22 +12,25 @@ struct MatchEntryRow: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            AsyncImage(url: match.buyingOrder.masterOrder.card.imageUrl) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 40, height: 55.87)
-                    .padding(.trailing, 15)
-            } placeholder: {
-                Color.gray
-                    .frame(width: 40, height: 55.87)
-                    .cornerRadius(3)
-                    .padding(.trailing, 15)
+            AsyncImage(url: match.buyingOrder.card.imageUrl, transaction: Transaction(animation: .default)) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40, height: 55.87)
+                        .padding(.trailing, 15)
+                default:
+                    Color.gray
+                        .frame(width: 40, height: 55.87)
+                        .cornerRadius(3)
+                        .padding(.trailing, 15)
+                }
             }
             
             VStack(spacing: 6) {
                 HStack(spacing: .zero) {
-                    Text("\(match.buyingOrder.masterOrder.card.name) - \(match.buyingOrder.quantity)x")
+                    Text("\(match.buyingOrder.card.name) - \(match.buyingOrder.quantity)x")
                         .font(.headline)
                         .bold()
                     
@@ -39,17 +42,17 @@ struct MatchEntryRow: View {
                 
                 HStack(spacing: .zero) {
                     HStack {
-                        Text(match.sellingOrder.masterOrder.username)
+                        Text(match.sellingOrder.username)
                             .foregroundColor(.bbRed)
                         Image(systemName: "arrow.right")
-                        Text(match.buyingOrder.masterOrder.username)
+                        Text(match.buyingOrder.username)
                             .foregroundColor(.green)
                     }
                     .font(.footnote)
                     
                     Spacer(minLength: .zero)
                     
-                    Text(match.sellingOrder.executionDate, style: .time)
+                    Text(match.executionDate, style: .time)
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }
@@ -65,38 +68,29 @@ struct MatchEntryRow_Previews: PreviewProvider {
         MatchEntryRow(
             match: Match(
                 id: 0,
-                buyingOrder: ChildOrder(
+                buyingOrder: MasterOrder(
                     id: 1,
-                    masterOrder: MasterOrder(
-                        id: 1,
-                        card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
-                        quantity: 1,
-                        price: 10,
-                        side: .buy,
-                        username: "sami",
-                        completed: true,
-                        placeDate: .now
-                    ),
-                    quantity: 5,
+                    card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
+                    quantity: 1,
                     price: 10,
-                    executionDate: .now
+                    side: .buy,
+                    username: "sami",
+                    completed: true,
+                    placeDate: .now
                 ),
-                sellingOrder: ChildOrder(
-                    id: 1,
-                    masterOrder: MasterOrder(
-                        id: 2,
-                        card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
-                        quantity: 1,
-                        price: 10,
-                        side: .sell,
-                        username: "atharva",
-                        completed: true,
-                        placeDate: .now
-                    ),
-                    quantity: 5,
+                sellingOrder:  MasterOrder(
+                    id: 2,
+                    card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
+                    quantity: 1,
                     price: 10,
-                    executionDate: .now
-                )
+                    side: .sell,
+                    username: "atharva",
+                    completed: true,
+                    placeDate: .now
+                ),
+                quantity: 5,
+                price: 10,
+                executionDate: .now
             )
         )
     }

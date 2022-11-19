@@ -7,9 +7,16 @@
 
 import Foundation
 
-struct Card: Hashable, Identifiable {
+struct Card: Codable, Hashable, Identifiable {
     let id: String
     let name: String
     let rarity: CardRarity?
     let imageUrl: URL
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "cardId"
+        case name
+        case rarity
+        case imageUrl
+    }
 }

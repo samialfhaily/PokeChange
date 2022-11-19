@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CardRarity: String, Hashable {
+enum CardRarity: String, Codable, Hashable {
     case amazingRare = "Amazing Rare"
     case common = "Common"
     case legend = "LEGEND"

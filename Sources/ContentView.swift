@@ -21,6 +21,7 @@ struct ContentView: View {
                 SignInView()
                     .environmentObject(authenticationManager)
             }
+            .environmentObject(authenticationManager)
     }
 }
 

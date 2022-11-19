@@ -9,6 +9,9 @@ import Foundation
 
 struct Match: Identifiable, Hashable {
     let id: Int
-    let buyingOrder: ChildOrder
-    let sellingOrder: ChildOrder
+    let buyingOrder: MasterOrder
+    let sellingOrder: MasterOrder
+    let quantity: Int
+    let price: Double
+    let executionDate: Date
 }
