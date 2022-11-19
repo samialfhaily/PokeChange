@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var authenticationManager = AuthenticationManager()
+    
     var body: some View {
-        SignUpView()
+        let isPresentingSignInSheet = Binding(
+            get: { !authenticationManager.isSignedIn },
+            set: { authenticationManager.isSignedIn = !$0 }
+        )
+        
+        Text("Hello, World")
+            .fullScreenCover(isPresented: isPresentingSignInSheet) {
+                SignUpView()
+                    .environmentObject(authenticationManager)
+            }
     }
 }
 

@@ -12,10 +12,19 @@ class SignUpViewModel: ObservableObject {
     @Published var username = ""
     @Published var password = ""
     @Published var confirmPassword = ""
+    
+    var isSignUpButtonDisabled: Bool {
+        return email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        || username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        || password.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        || confirmPassword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        || password != confirmPassword
+    }
 }
 
 struct SignUpView: View {
     @StateObject private var viewModel = SignUpViewModel()
+    @EnvironmentObject private var authenticationManager: AuthenticationManager
     
     var body: some View {
         VStack(spacing: 20) {
@@ -29,7 +38,6 @@ struct SignUpView: View {
                 .padding(.bottom, 10)
             
             VStack(spacing: 20) {
-                BBTextField("Email", text: $viewModel.email, imageName: "envelope.fill")
                 BBTextField("Username", text: $viewModel.username, imageName: "person.fill")
                 BBTextField("Password", text: $viewModel.password, imageName: "lock.fill", isSecure: true)
                 BBTextField("Confirm Password", text: $viewModel.confirmPassword, imageName: "lock.fill", isSecure: true)
@@ -37,28 +45,21 @@ struct SignUpView: View {
             .padding(.bottom, 10)
             
             BBButton(.primary) {
-                print("signed up")
+                authenticationManager.isSignedIn = true
             } label: {
                 Text("Sign Up")
             }
-            .padding(.bottom, -10)
-            
-            HStack {
-                Text("Already have an account?")
-                
-                BBButton(.secondary) {
-                    print("clicked login")
-                } label: {
-                    Text("Sign In")
-                }
-            }
+            .disabled(viewModel.isSignUpButtonDisabled)
         }
         .padding(20)
     }
 }
 
 struct SignUpView_Previews: PreviewProvider {
+    @StateObject static private var authenticationManager = AuthenticationManager()
+    
     static var previews: some View {
         SignUpView()
+            .environmentObject(authenticationManager)
     }
 }
