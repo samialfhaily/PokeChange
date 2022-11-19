@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct TopCardRow: View {
-    let card: Card
-    let count: Int
+    let walletCard: WalletCard
     
     var body: some View {
         HStack(alignment: .top, spacing: .zero) {
-            AsyncImage(url: card.imageUrl, transaction: Transaction(animation: .default)) { phase in
+            AsyncImage(url: walletCard.card.imageUrl, transaction: Transaction(animation: .default)) { phase in
                 switch phase {
                 case .success(let image):
                     image
@@ -30,11 +29,11 @@ struct TopCardRow: View {
             }
             
             VStack(alignment: .leading, spacing: 4) {
-                Text(card.name)
+                Text(walletCard.card.name)
                     .font(.title2)
                     .bold()
                 
-                Text(card.rarity?.rawValue ?? "Unknown")
+                Text(walletCard.card.rarity?.rawValue ?? "Unknown")
                     .font(.title3)
                     .foregroundColor(.secondary)
                 
@@ -42,7 +41,7 @@ struct TopCardRow: View {
                 
                 HStack(spacing: .zero) {
                     Text("Owned: ")
-                    Text(count, format: .number)
+                    Text(walletCard.count, format: .number)
                         .fontWeight(.bold)
                 }
                 .padding(.bottom, 4)
@@ -56,6 +55,6 @@ struct TopCardRow: View {
 
 struct TopCardRow_Previews: PreviewProvider {
     static var previews: some View {
-        TopCardRow(card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!), count: 2)
+        TopCardRow(walletCard: WalletCard(card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!), count: 2))
     }
 }

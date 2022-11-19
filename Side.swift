@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Side: String, Hashable {
+enum Side: String, Codable, Hashable {
     case buy = "BUY"
     case sell = "SELL"
 }
