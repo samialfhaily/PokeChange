@@ -22,9 +22,9 @@ struct MatchesView: View {
                         MatchEntryRow(match: match)
                     }
                 }
-                .navigationDestination(for: Match.self) { match in
-                    MatchDetailsView(match: match)
-                }
+            }
+            .navigationDestination(for: Match.self) { match in
+                MatchDetailsView(match: match)
             }
             .navigationTitle(Text("Matches"))
         }
