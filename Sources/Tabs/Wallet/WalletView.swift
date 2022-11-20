@@ -69,6 +69,8 @@ struct WalletView: View {
     @StateObject private var viewModel = WalletViewModel()
     
     var body: some View {
+        let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+        
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
@@ -172,6 +174,12 @@ struct WalletView: View {
                 }
             }
             .navigationTitle(Text("Wallet"))
+            .onReceive(timer) { _ in
+                Task {
+                    await viewModel.fetchTopCards(userId: authenticationManager.user.id)
+                    await viewModel.fetchOutstandingOrders(userId: authenticationManager.user.id)
+                }
+            }
         }
     }
 }

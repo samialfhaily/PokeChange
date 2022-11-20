@@ -51,6 +51,8 @@ struct MatchesView: View {
     @StateObject private var viewModel = MatchesViewModel()
     
     var body: some View {
+        let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+        
         NavigationStack {
             Form {
                 Section("Filters") {
@@ -103,6 +105,11 @@ struct MatchesView: View {
             .onChange(of: viewModel.side) { _ in
                 Task {
                     await viewModel.fetchMatches()
+                }
+            }
+            .onReceive(timer) { _ in
+                Task {
+                    await viewModel.fetchMatches
                 }
             }
         }

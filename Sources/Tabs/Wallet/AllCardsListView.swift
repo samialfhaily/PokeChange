@@ -11,7 +11,7 @@ final class AllCardsListViewModel: ObservableObject {
     @Published var walletCards: [WalletCard]?
     
     @MainActor func fetchCards(userId: Int) async {
-        let url = URL(string: "https://andreascs.com//api/user/\(userId)/cards?sortBy=NAME")!
+        let url = URL(string: "https://andreascs.com/api/user/\(userId)/cards?sortBy=NAME")!
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
@@ -35,6 +35,8 @@ struct AllCardsListView: View {
     }
     
     var body: some View {
+        let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+        
         ScrollView {
             Group {
                 if let walletCards = viewModel.walletCards {
@@ -58,6 +60,11 @@ struct AllCardsListView: View {
         .animation(.default, value: viewModel.walletCards)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(Text("Pokédex"))
+        .onReceive(timer) { _ in
+            Task {
+                await viewModel.fetchCards(userId: authenticationManager.user.id)
+            }
+        }
     }
     
     private func thumbnail(walletCard: WalletCard) -> some View {
