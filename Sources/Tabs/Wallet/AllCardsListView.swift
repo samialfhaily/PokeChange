@@ -77,17 +77,28 @@ struct AllCardsListView: View {
                     }
                 }
                 
-                VStack(spacing: .zero) {
-                    HStack(spacing: .zero) {
+                VStack(alignment: .leading, spacing: .zero) {
+                    HStack {
                         Text("PRICE")
-                        Spacer(minLength: .zero)
+                            .padding(8)
+                            .background(Color(uiColor: .lightGray).opacity(0.8))
+                            .cornerRadius(8)
+                            .foregroundColor(.white)
+                        Spacer()
                     }
                     
+                    Spacer()
+                    
                     HStack(spacing: .zero) {
-                        Spacer(minLength: .zero)
+                        Spacer()
                         Text(walletCard.count, format: .number)
+                            .padding(8)
+                            .background(Color.bbBlue).opacity(0.8)
+                            .foregroundColor(.black)
+                            .cornerRadius(8)
                     }
                 }
+//                .frame(width: (UIScreen.main.bounds.width - 48) / 2, height: (UIScreen.main.bounds.width - 48) / 2 * 1.395)
             }
             
             Text(walletCard.card.name)
