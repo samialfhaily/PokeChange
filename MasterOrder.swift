@@ -16,4 +16,15 @@ struct MasterOrder: Codable, Hashable, Identifiable {
     let username: String
     let completed: Bool
     let placeDate: Date
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case card
+        case quantity
+        case price
+        case side
+        case username
+        case completed
+        case placeDate = "created"
+    }
 }

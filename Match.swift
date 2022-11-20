@@ -7,11 +7,20 @@
 
 import Foundation
 
-struct Match: Identifiable, Hashable {
+struct Match: Identifiable, Hashable, Codable {
     let id: Int
     let buyingOrder: MasterOrder
     let sellingOrder: MasterOrder
     let quantity: Int
     let price: Double
     let executionDate: Date
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case buyingOrder = "buyer"
+        case sellingOrder = "seller"
+        case quantity
+        case price
+        case executionDate = "created"
+    }
 }

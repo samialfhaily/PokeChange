@@ -15,16 +15,30 @@ struct WalletCard: Codable, Hashable, Identifiable {
     let count: Int
 }
 
+struct WalletPriceCard: Codable, Identifiable, Hashable {
+    let walletCard: WalletCard
+    let price: Double
+    
+    var id: String {
+        return walletCard.id
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case walletCard = "first"
+        case price = "second"
+    }
+}
+
 final class WalletViewModel: ObservableObject {
-    @Published var topCards: [WalletCard]?
+    @Published var topCards: [WalletPriceCard]?
     @Published var pendingOrders: [MasterOrder]?
     
     @MainActor func fetchTopCards(userId: Int) async {
-        let url = URL(string: "https://andreascs.com/api/\(userId)/top_cards")!
+        let url = URL(string: "https://andreascs.com/api/user/\(userId)/top3_cards")!
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            self.topCards = try JSONDecoder().decode([WalletCard].self, from: data)
+            self.topCards = try JSONDecoder().decode([WalletPriceCard].self, from: data)
         } catch {
             self.topCards = []
             print(error.localizedDescription)
@@ -32,11 +46,15 @@ final class WalletViewModel: ObservableObject {
     }
     
     @MainActor func fetchOutstandingOrders(userId: Int) async {
-        let url = URL(string: "https://andreascs.com/api/orders/\(userId)")!
+        let url = URL(string: "https://andreascs.com/api/snapshot?userId=\(userId)")!
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            self.pendingOrders = try JSONDecoder().decode([MasterOrder].self, from: data)
+            let decoder = JSONDecoder()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            decoder.dateDecodingStrategy = Foundation.JSONDecoder.DateDecodingStrategy.formatted(formatter)
+            self.pendingOrders = try decoder.decode([MasterOrder].self, from: data)
         } catch {
             self.pendingOrders = []
             print(error.localizedDescription)
@@ -62,18 +80,16 @@ struct WalletView: View {
                     }
                     
                     // TOP 3 Owned Cards
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 12) {
                         HStack(alignment: .center, spacing: .zero) {
-                            Text("Top Owned Cards")
+                            Text("Most Valuable Cards")
                                 .font(.title3)
                                 .bold()
                             
                             Spacer(minLength: .zero)
                             
-                            if viewModel.topCards?.count ?? 0 > 3 {
-                                BBButton(.secondary) {
-                                    print("CLICKED")
-                                } label: {
+                            if viewModel.topCards?.count ?? 0 >= 3 {
+                                NavigationLink(destination: AllCardsListView()) {
                                     HStack(spacing: .zero) {
                                         Text("See All ")
                                         Image(systemName: "chevron.right")
@@ -88,7 +104,7 @@ struct WalletView: View {
                                     Text("No cards found.")
                                 } else {
                                     ForEach(topCards) { card in
-                                        TopCardRow(walletCard: card)
+                                        TopCardRow(walletCard: card.walletCard)
                                     }
                                 }
                             }
@@ -104,7 +120,7 @@ struct WalletView: View {
                     .animation(.default, value: viewModel.topCards)
                     
                     // Pending orders
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 12) {
                         Text("Pending Orders")
                             .font(.title3)
                             .bold()
@@ -136,6 +152,9 @@ struct WalletView: View {
                 .onAppear {
                     viewModel.topCards = nil
                     viewModel.pendingOrders = nil
+                    Task {
+                        await authenticationManager.signIn(username: authenticationManager.user.username, password: authenticationManager.user.password)
+                    }
                 }
             }
             .navigationTitle(Text("Wallet"))

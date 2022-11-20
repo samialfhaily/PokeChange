@@ -7,7 +7,11 @@
 
 import Foundation
 
-enum Side: String, Codable, Hashable {
+enum Side: String, Codable, Hashable, Identifiable {
     case buy = "BUY"
     case sell = "SELL"
+    
+    var id: Self {
+        return self
+    }
 }

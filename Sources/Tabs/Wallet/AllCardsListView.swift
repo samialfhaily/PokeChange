@@ -11,7 +11,7 @@ final class AllCardsListViewModel: ObservableObject {
     @Published var walletCards: [WalletCard]?
     
     @MainActor func fetchCards(userId: Int) async {
-        let url = URL(string: "https://andreascs.com/\(userId)/cards")!
+        let url = URL(string: "https://andreascs.com//api/user/\(userId)/cards?sortBy=NAME")!
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
@@ -35,22 +35,29 @@ struct AllCardsListView: View {
     }
     
     var body: some View {
-        Group {
-            if let walletCards = viewModel.walletCards {
-                LazyVGrid(columns: columns, alignment: .center, spacing: 16) {
-                    ForEach(walletCards) { walletCard in
-                        thumbnail(walletCard: walletCard)
-                            .clipped()
+        ScrollView {
+            Group {
+                if let walletCards = viewModel.walletCards {
+                    LazyVGrid(columns: columns, alignment: .center, spacing: 16) {
+                        ForEach(walletCards) { walletCard in
+                            NavigationLink(destination: MarketplaceCardDetailsView(card: walletCard.card)) {
+                                thumbnail(walletCard: walletCard)
+                                    .clipped()
+                            }
+                        }
                     }
+                } else {
+                    ProgressView("Loading...")
+                        .task {
+                            await viewModel.fetchCards(userId: authenticationManager.user.id)
+                        }
                 }
-            } else {
-                ProgressView("Loading...")
-                    .task {
-                        await viewModel.fetchCards(userId: authenticationManager.user.id)
-                    }
             }
+            .padding(20)
         }
         .animation(.default, value: viewModel.walletCards)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(Text("Pokédex"))
     }
     
     private func thumbnail(walletCard: WalletCard) -> some View {
