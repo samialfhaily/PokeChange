@@ -79,7 +79,7 @@ struct MarketplaceCardDetailsView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            HStack(alignment: .bottom, spacing: 4) {
+            HStack(alignment: .top, spacing: 4) {
                 AsyncImage(url: card.imageUrl, transaction: Transaction(animation: .default)) { phase in
                     switch phase {
                     case .success(let image):
@@ -97,9 +97,13 @@ struct MarketplaceCardDetailsView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: .zero) {
+                    Spacer()
+                    
                     Text(card.name)
                         .font(.largeTitle)
                         .bold()
+                    
+                    Spacer()
                     
                     Text(card.rarity?.rawValue ?? "Unknown")
                         .font(.title2)
@@ -118,7 +122,7 @@ struct MarketplaceCardDetailsView: View {
                                 }
                         }
                     }
-                    .font(.title2)
+                    .font(.title3)
                     .foregroundColor(.secondary)
                     .bold()
                     .padding(.bottom, 2)
@@ -143,6 +147,7 @@ struct MarketplaceCardDetailsView: View {
                 
                 Spacer(minLength: .zero)
             }
+            .frame(height: 209.4)
             
             HStack (spacing: 20) {
                 Button {
@@ -153,10 +158,6 @@ struct MarketplaceCardDetailsView: View {
                         .foregroundColor(.bbBlack)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(lineWidth: 2)
-                                .background(Color.green))
                         .cornerRadius(10)
                 }
                 
@@ -168,10 +169,6 @@ struct MarketplaceCardDetailsView: View {
                         .foregroundColor(.bbBlack)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(lineWidth: 2)
-                                .background(Color.bbRed))
                         .cornerRadius(10)
                 }
             }

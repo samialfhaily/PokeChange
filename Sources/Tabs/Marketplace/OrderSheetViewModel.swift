@@ -30,6 +30,7 @@ final class OrderSheetViewModel: ObservableObject {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         
+        
         do {
             let encoder = JSONEncoder()
             let payload = PlaceOrderPayload(cardId: cardId, price: price, quantity: quantity, side: side.rawValue, username: username)
@@ -38,6 +39,7 @@ final class OrderSheetViewModel: ObservableObject {
             if (response as? HTTPURLResponse)?.statusCode == 201 || (response as? HTTPURLResponse)?.statusCode == 200 {
                 return true
             }
+            print(response)
         } catch {
             print(error.localizedDescription)
         }
