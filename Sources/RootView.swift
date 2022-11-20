@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @State private var selection = 0
+    @AppStorage("tab_selection") private var selection = 0
     
     var body: some View {
         TabView(selection: $selection) {

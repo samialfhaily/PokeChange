@@ -7,71 +7,6 @@
 
 import SwiftUI
 
-struct CountResponse: Codable {
-    let count: Int
-}
-
-struct PriceResponse: Codable {
-    let price: Int?
-}
-
-struct ActiveOrdersResponse: Codable {
-    let buy: [MasterOrder]
-    let sell: [MasterOrder]
-}
-
-final class MarketplaceCardDetailsViewModel: ObservableObject {
-    @Published var buy: [MasterOrder]?
-    @Published var sell: [MasterOrder]?
-    @Published var orderSide: Side?
-    @Published var owned: Int?
-    @Published var recommendedPrice: Int?
-    
-    @MainActor func fetchOrders(cardId: String) async {
-        let url = URL(string: "https://andreascs.com/api/cards/\(cardId)/orders")!
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let decoder = JSONDecoder()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-            decoder.dateDecodingStrategy = Foundation.JSONDecoder.DateDecodingStrategy.formatted(formatter)
-            let response = try decoder.decode(ActiveOrdersResponse.self, from: data)
-            self.buy = response.buy
-            self.sell = response.sell
-        } catch {
-            self.buy = []
-            self.sell = []
-            print(error.localizedDescription)
-        }
-    }
-    
-    @MainActor func fetchOwnedCount(cardId: String, userId: Int) async {
-        let url = URL(string: "https://andreascs.com/api/user/\(userId)/card/\(cardId)/count")!
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let response = try JSONDecoder().decode(CountResponse.self, from: data)
-            self.owned = response.count
-        } catch {
-            self.owned = 0
-            print(error.localizedDescription)
-        }
-    }
-    
-    @MainActor func fetchRecommendedPrice(cardId: String) async {
-        let url = URL(string: "https://andreascs.com/api/cards/\(cardId)/price")!
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let response = try JSONDecoder().decode(PriceResponse.self, from: data)
-            self.recommendedPrice = response.price
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-}
-
 struct MarketplaceCardDetailsView: View {
     let card: Card
     @StateObject private var viewModel = MarketplaceCardDetailsViewModel()
@@ -244,60 +179,6 @@ struct MarketplaceCardDetailsView: View {
             .padding(20)
             .navigationTitle(Text("Card Shop"))
             .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-}
-
-struct PendingCardOrderRow: View {
-    let order: MasterOrder
-    
-    var body: some View {
-        HStack {
-            Group {
-                Spacer(minLength: .zero)
-                Text(order.quantity, format: .number)
-                Spacer(minLength: .zero)
-                Divider()
-                Spacer(minLength: .zero)
-                Text(order.price, format: .currency(code: "USD"))
-            }
-            Group {
-                Spacer(minLength: .zero)
-                Divider()
-                Spacer(minLength: .zero)
-                Text(order.username)
-                Spacer(minLength: .zero)
-            }
-        }
-        .frame(height: 30)
-    }
-}
-
-struct PendingCardOrderRow_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            PendingCardOrderRow(order: MasterOrder(
-                id: 2,
-                card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
-                quantity: 1,
-                price: 10,
-                side: .sell,
-                username: "atharva",
-                completed: true,
-                placeDate: .now
-            )
-            )
-            PendingCardOrderRow(order: MasterOrder(
-                id: 2,
-                card: Card(id: "abc", name: "Pikachu", rarity: .amazingRare, imageUrl: URL(string: "https://images.pokemontcg.io/xy1/1.png")!),
-                quantity: 1,
-                price: 10,
-                side: .sell,
-                username: "atharva",
-                completed: true,
-                placeDate: .now
-            )
-            )
         }
     }
 }

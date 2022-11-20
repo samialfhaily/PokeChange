@@ -7,18 +7,6 @@
 
 import SwiftUI
 
-class SignInViewModel: ObservableObject {
-    @Published var username = ""
-    @Published var password = ""
-    
-    @Published var isPresentingSignUpSheet = false
-    
-    var isSignInButtonDisabled: Bool {
-        return username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-        || password.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-    }
-}
-
 struct SignInView: View {
     @StateObject private var viewModel = SignInViewModel()
     @EnvironmentObject private var authenticationManager: AuthenticationManager
