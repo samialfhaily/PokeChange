@@ -33,8 +33,6 @@ final class MatchesViewModel: ObservableObject {
         
         let url = components.url!
         
-        print(url)
-        
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()

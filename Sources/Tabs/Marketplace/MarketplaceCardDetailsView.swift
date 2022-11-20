@@ -158,6 +158,7 @@ struct MarketplaceCardDetailsView: View {
                         .foregroundColor(.bbBlack)
                         .frame(maxWidth: .infinity)
                         .padding()
+                        .background(.green)
                         .cornerRadius(10)
                 }
                 
@@ -169,6 +170,7 @@ struct MarketplaceCardDetailsView: View {
                         .foregroundColor(.bbBlack)
                         .frame(maxWidth: .infinity)
                         .padding()
+                        .background(Color.bbRed)
                         .cornerRadius(10)
                 }
             }
