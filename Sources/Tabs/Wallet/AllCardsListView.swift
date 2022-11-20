@@ -62,7 +62,7 @@ struct AllCardsListView: View {
     
     private func thumbnail(walletCard: WalletCard) -> some View {
         VStack(spacing: 4) {
-            ZStack {
+            ZStack(alignment: .bottomTrailing) {
                 AsyncImage(url: walletCard.card.imageUrl, transaction: Transaction(animation: .default)) { phase in
                     switch phase {
                     case .success(let image):
@@ -77,28 +77,11 @@ struct AllCardsListView: View {
                     }
                 }
                 
-                VStack(alignment: .leading, spacing: .zero) {
-                    HStack {
-                        Text("PRICE")
-                            .padding(8)
-                            .background(Color(uiColor: .lightGray).opacity(0.8))
-                            .cornerRadius(8)
-                            .foregroundColor(.white)
-                        Spacer()
-                    }
-                    
-                    Spacer()
-                    
-                    HStack(spacing: .zero) {
-                        Spacer()
-                        Text(walletCard.count, format: .number)
-                            .padding(8)
-                            .background(Color.bbBlue).opacity(0.8)
-                            .foregroundColor(.black)
-                            .cornerRadius(8)
-                    }
-                }
-//                .frame(width: (UIScreen.main.bounds.width - 48) / 2, height: (UIScreen.main.bounds.width - 48) / 2 * 1.395)
+                Text(walletCard.count, format: .number)
+                    .padding(8)
+                    .background(.white)
+                    .foregroundColor(.bbBlue)
+                    .cornerRadius(8)
             }
             
             Text(walletCard.card.name)
