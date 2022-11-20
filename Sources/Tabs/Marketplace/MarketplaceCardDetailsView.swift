@@ -133,7 +133,7 @@ struct MarketplaceCardDetailsView: View {
                         
                         Group {
                             if let recommendedPrice = viewModel.recommendedPrice {
-                                Text("Price: \(recommendedPrice)")
+                                Text("Price: \(recommendedPrice.formatted(.currency(code: "USD")))")
                             } else {
                                 Text("Price: -")
                                     .task {
