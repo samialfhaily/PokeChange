@@ -18,14 +18,14 @@
 		2624896C29289C3800A04455 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624896B29289C3800A04455 /* RootView.swift */; };
 		2624896F2928AAC300A04455 /* MatchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624896E2928AAC300A04455 /* MatchDetailsView.swift */; };
 		262489712928AAD700A04455 /* MatchEntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262489702928AAD700A04455 /* MatchEntryRow.swift */; };
-		269DB9AB29284A4900606CA2 /* XchangeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269DB9AA29284A4900606CA2 /* XchangeApp.swift */; };
+		269DB9AB29284A4900606CA2 /* PokeChangeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269DB9AA29284A4900606CA2 /* PokeChangeApp.swift */; };
 		269DB9AD29284A4900606CA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269DB9AC29284A4900606CA2 /* ContentView.swift */; };
 		269DB9AF29284A4A00606CA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 269DB9AE29284A4A00606CA2 /* Assets.xcassets */; };
 		26E982202928E8A800016325 /* PendingOrderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9821F2928E8A800016325 /* PendingOrderRow.swift */; };
 		26E982222928E8AD00016325 /* TopCardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E982212928E8AD00016325 /* TopCardRow.swift */; };
 		26E982242928F2CC00016325 /* MarketplaceCardThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E982232928F2CC00016325 /* MarketplaceCardThumbnail.swift */; };
 		26E982262929590E00016325 /* AllCardsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E982252929590E00016325 /* AllCardsListView.swift */; };
-		26E982282929777300016325 /* OrderSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E982272929777300016325 /* OrderSheetViewModel.swift */; };
+		26E982282929777300016325 /* OrderSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E982272929777300016325 /* OrderSheetView.swift */; };
 		2F36D79C292860D000205B63 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F36D79B292860D000205B63 /* SignInView.swift */; };
 		2F82726129293395003A2C83 /* MarketplaceCardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F82726029293395003A2C83 /* MarketplaceCardDetailsView.swift */; };
 		2F96CE4229289FB80075623D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96CE4129289FB80075623D /* Card.swift */; };
@@ -48,14 +48,14 @@
 		2624896E2928AAC300A04455 /* MatchDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsView.swift; sourceTree = "<group>"; };
 		262489702928AAD700A04455 /* MatchEntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchEntryRow.swift; sourceTree = "<group>"; };
 		269DB9A729284A4900606CA2 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		269DB9AA29284A4900606CA2 /* XchangeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XchangeApp.swift; sourceTree = "<group>"; };
+		269DB9AA29284A4900606CA2 /* PokeChangeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeChangeApp.swift; sourceTree = "<group>"; };
 		269DB9AC29284A4900606CA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		269DB9AE29284A4A00606CA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26E9821F2928E8A800016325 /* PendingOrderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOrderRow.swift; sourceTree = "<group>"; };
 		26E982212928E8AD00016325 /* TopCardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCardRow.swift; sourceTree = "<group>"; };
 		26E982232928F2CC00016325 /* MarketplaceCardThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceCardThumbnail.swift; sourceTree = "<group>"; };
 		26E982252929590E00016325 /* AllCardsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCardsListView.swift; sourceTree = "<group>"; };
-		26E982272929777300016325 /* OrderSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSheetViewModel.swift; sourceTree = "<group>"; };
+		26E982272929777300016325 /* OrderSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSheetView.swift; sourceTree = "<group>"; };
 		2F36D79B292860D000205B63 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2F82726029293395003A2C83 /* MarketplaceCardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceCardDetailsView.swift; sourceTree = "<group>"; };
 		2F96CE4129289FB80075623D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 				2624896129289BED00A04455 /* MarketplaceView.swift */,
 				26E982232928F2CC00016325 /* MarketplaceCardThumbnail.swift */,
 				2F82726029293395003A2C83 /* MarketplaceCardDetailsView.swift */,
-				26E982272929777300016325 /* OrderSheetViewModel.swift */,
+				26E982272929777300016325 /* OrderSheetView.swift */,
 			);
 			path = Marketplace;
 			sourceTree = "<group>";
@@ -139,7 +139,7 @@
 			children = (
 				2F96CE4029289FA50075623D /* Models */,
 				2624896329289BFA00A04455 /* Tabs */,
-				269DB9AA29284A4900606CA2 /* XchangeApp.swift */,
+				269DB9AA29284A4900606CA2 /* PokeChangeApp.swift */,
 				2F36D79B292860D000205B63 /* SignInView.swift */,
 				269DB9AC29284A4900606CA2 /* ContentView.swift */,
 				260C5D1C2928657700F028D6 /* AuthenticationManager.swift */,
@@ -237,7 +237,7 @@
 			files = (
 				2F82726129293395003A2C83 /* MarketplaceCardDetailsView.swift in Sources */,
 				2F96CE4429289FF90075623D /* MasterOrder.swift in Sources */,
-				26E982282929777300016325 /* OrderSheetViewModel.swift in Sources */,
+				26E982282929777300016325 /* OrderSheetView.swift in Sources */,
 				26E982242928F2CC00016325 /* MarketplaceCardThumbnail.swift in Sources */,
 				269DB9AD29284A4900606CA2 /* ContentView.swift in Sources */,
 				2624896A29289C2600A04455 /* MatchesView.swift in Sources */,
@@ -258,7 +258,7 @@
 				260C5D15292852A800F028D6 /* SignUpView.swift in Sources */,
 				260C5D1929285F3A00F028D6 /* BBTextField.swift in Sources */,
 				2624896F2928AAC300A04455 /* MatchDetailsView.swift in Sources */,
-				269DB9AB29284A4900606CA2 /* XchangeApp.swift in Sources */,
+				269DB9AB29284A4900606CA2 /* PokeChangeApp.swift in Sources */,
 				262489712928AAD700A04455 /* MatchEntryRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

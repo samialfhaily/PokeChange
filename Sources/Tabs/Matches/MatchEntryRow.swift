@@ -30,7 +30,7 @@ struct MatchEntryRow: View {
             
             VStack(spacing: 6) {
                 HStack(spacing: .zero) {
-                    Text("\(match.buyingOrder.card.name) - \(match.buyingOrder.quantity)x")
+                    Text("\(match.buyingOrder.card.name) - \(min(match.sellingOrder.quantity, match.buyingOrder.quantity))x")
                         .font(.headline)
                         .bold()
                     

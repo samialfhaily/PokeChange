@@ -30,7 +30,7 @@ struct PendingOrderRow: View {
             
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: .zero) {
-                    Text("\(order.card.name) - \(order.quantity)x cards")
+                    Text("\(order.card.name) - \(order.quantity)x \(order.quantity > 1 ? "cards" : "card")")
                         .font(.headline)
                         .bold()
                     
